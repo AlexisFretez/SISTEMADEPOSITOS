@@ -139,7 +139,3 @@ class Usuarios extends CI_Controller
 		}
 	}
 }
-
-
-
-// usuario ok
