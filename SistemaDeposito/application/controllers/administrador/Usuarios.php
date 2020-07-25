@@ -46,6 +46,7 @@ class Usuarios extends CI_Controller
 		$username = $this->input->post("username");
 		$password = $this->input->post("password");
 		$rol = $this->input->post("rol");
+		$fecha_creacion = $this->input->post("fecha_creacion");
 
 		$data  = array(
 			'nombres' => $nombres,
@@ -55,6 +56,7 @@ class Usuarios extends CI_Controller
 			'username' => $username,
 			'password' => sha1($password),
 			'rol_id' => $rol,
+			'fecha_creacion' => $fecha_creacion,
 			'estado' => "1"
 		);
 
@@ -97,6 +99,7 @@ class Usuarios extends CI_Controller
 		$username = $this->input->post("username");
 
 		$rol = $this->input->post("rol");
+		$fecha_creacion = $this->input->post("fecha_creacion");
 
 		$data  = array(
 			'nombres' => $nombres,
@@ -106,6 +109,8 @@ class Usuarios extends CI_Controller
 			'username' => $username,
 
 			'rol_id' => $rol,
+			'fecha_creacion' => $fecha_creacion,
+
 		);
 
 		if ($this->Usuarios_model->update($idusuario, $data)) {

@@ -4,3 +4,4 @@
 <p><strong>Email:</strong> <?php echo $usuario->email; ?></p>
 <p><strong>Usuario:</strong> <?php echo $usuario->username; ?></p>
 <p><strong>Rol:</strong> <?php echo $usuario->rol; ?></p>
+<p><strong>Fecha Creacion:</strong> <?php echo $usuario->fecha_creacion; ?></p>

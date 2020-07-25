@@ -1,10 +1,12 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Almacen extends CI_Controller {
+class Almacen extends CI_Controller
+{
 
 	private $permisos;
-	public function __construct(){
+	public function __construct()
+	{
 		parent::__construct();
 		$this->permisos = $this->backend_lib->control();
 		$this->load->model("Almacen_model");
@@ -15,16 +17,16 @@ class Almacen extends CI_Controller {
 	{
 		$data  = array(
 			'permisos' => $this->permisos,
-			'almacenes' => $this->Almacen_model->getAlmacenes(), 
+			'almacenes' => $this->Almacen_model->getAlmacenes(),
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
-		$this->load->view("admin/almacen/list",$data);
+		$this->load->view("admin/almacen/list", $data);
 		$this->load->view("layouts/footer");
-
 	}
 
-	public function add(){
+	public function add()
+	{
 
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -32,95 +34,92 @@ class Almacen extends CI_Controller {
 		$this->load->view("layouts/footer");
 	}
 
-	public function store(){
+	public function store()
+	{
 
 		$nombre = $this->input->post("nombre");
-		$descripcion = $this->input->post("descripcion");
+		$fecha_creacion = $this->input->post("fecha_creacion");
 
-		$this->form_validation->set_rules("nombre","Nombre","required|is_unique[almacen.nombre]");
+		$this->form_validation->set_rules("nombre", "Nombre", "required|is_unique[almacen.nombre]");
 
-		if ($this->form_validation->run()==TRUE) {
+		if ($this->form_validation->run() == TRUE) {
 
 			$data  = array(
-				'nombre' => $nombre, 
-				'descripcion' => $descripcion,
+				'nombre' => $nombre,
+				'fecha_creacion' => $fecha_creacion,
 				'estado' => "1"
 			);
 
 			if ($this->Almacen_model->save($data)) {
-				redirect(base_url()."mantenimiento/almacen");
+				redirect(base_url() . "mantenimiento/almacen");
+			} else {
+				$this->session->set_flashdata("error", "No se pudo guardar la informacion");
+				redirect(base_url() . "mantenimiento/almacen/add");
 			}
-			else{
-				$this->session->set_flashdata("error","No se pudo guardar la informacion");
-				redirect(base_url()."mantenimiento/almacen/add");
-			}
-		}
-		else{
+		} else {
 			/*redirect(base_url()."mantenimiento/categorias/add");*/
 			$this->add();
 		}
-
-		
 	}
 
-	public function edit($id){
+	public function edit($id)
+	{
 		$data  = array(
-			'categoria' => $this->Almacen_model->getCategoria($id), 
+			'almacen' => $this->Almacen_model->getAlmacen($id),
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
-		$this->load->view("admin/almacen/edit",$data);
+		$this->load->view("admin/almacen/edit", $data);
 		$this->load->view("layouts/footer");
 	}
 
-	public function update(){
-		$idCategoria = $this->input->post("idCategoria");
+	public function update()
+	{
+		$idAlmacen = $this->input->post("idAlmacen");
 		$nombre = $this->input->post("nombre");
-		$descripcion = $this->input->post("descripcion");
+		$fecha_creacion = $this->input->post("fecha_creacion");
 
-		$categoriaactual = $this->Almacen_model->getCategoria($idCategoria);
+		$almacenactual = $this->Almacen_model->getAlmacen($idAlmacen);
 
-		if ($nombre == $categoriaactual->nombre) {
+		if ($nombre == $almacenactual->nombre) {
 			$is_unique = "";
-		}else{
+		} else {
 			$is_unique = "|is_unique[almacen.nombre]";
-
 		}
 
 
-		$this->form_validation->set_rules("nombre","Nombre","required".$is_unique);
-		if ($this->form_validation->run()==TRUE) {
+		$this->form_validation->set_rules("nombre", "Nombre", "required" . $is_unique);
+		if ($this->form_validation->run() == TRUE) {
 			$data = array(
-				'nombre' => $nombre, 
-				'descripcion' => $descripcion,
+				'nombre' => $nombre,
+				'fecha_creacion' => $fecha_creacion,
 			);
 
-			if ($this->Almacen_model->update($idCategoria,$data)) {
-				redirect(base_url()."mantenimiento/almacen");
+			if ($this->Almacen_model->update($idAlmacen, $data)) {
+				redirect(base_url() . "mantenimiento/almacen");
+			} else {
+				$this->session->set_flashdata("error", "No se pudo actualizar la informacion");
+				redirect(base_url() . "mantenimiento/almacen/edit/" . $idAlmacen);
 			}
-			else{
-				$this->session->set_flashdata("error","No se pudo actualizar la informacion");
-				redirect(base_url()."mantenimiento/almacen/edit/".$idCategoria);
-			}
-		}else{
-			$this->edit($idCategoria);
+		} else {
+			$this->edit($idAlmacen);
 		}
-
-		
 	}
 
-	public function view($id){
+	public function view($id)
+	{
 		$data  = array(
-			'categoria' => $this->Almacen_model->getCategoria($id), 
+			'almacen' => $this->Almacen_model->getAlmacen($id),
 		);
-		$this->load->view("admin/almacen/view",$data);
+		$this->load->view("admin/almacen/view", $data);
 	}
 
-	public function delete($id){
+	public function delete($id)
+	{
 		$data  = array(
-			'estado' => "0", 
+			'estado' => "0",
 		);
-		$this->Almacen_model->update($id,$data);
+		$this->Almacen_model->update($id, $data);
 		echo "mantenimiento/almacen";
 	}
 }
