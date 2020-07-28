@@ -1,10 +1,12 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Proveedor extends CI_Controller {
+class Proveedor extends CI_Controller
+{
 
 	private $permisos;
-	public function __construct(){
+	public function __construct()
+	{
 		parent::__construct();
 		$this->permisos = $this->backend_lib->control();
 		$this->load->model("Proveedor_model");
@@ -16,27 +18,28 @@ class Proveedor extends CI_Controller {
 	{
 		$data  = array(
 			'permisos' => $this->permisos,
-			'proveedores' => $this->Proveedor_model->getProveedores(), 
+			'proveedores' => $this->Proveedor_model->getProveedores(),
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
-		$this->load->view("admin/proveedor/list",$data);
+		$this->load->view("admin/proveedor/list", $data);
 		$this->load->view("layouts/footer");
-
 	}
 
-	public function add(){
+	public function add()
+	{
 		$data  = array(
-			'tipo_contribuyentes' => $this->Contribuyente_model->getContribuyentes(), 
+			'tipo_contribuyentes' => $this->Contribuyente_model->getContribuyentes(),
 		);
 
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
-		$this->load->view("admin/proveedor/add",$data);
+		$this->load->view("admin/proveedor/add", $data);
 		$this->load->view("layouts/footer");
 	}
 
-	public function store(){
+	public function store()
+	{
 
 		$nombre = $this->input->post("nombre");
 		$nit = $this->input->post("nit");
@@ -46,15 +49,14 @@ class Proveedor extends CI_Controller {
 		$email = $this->input->post("email");
 		$contacto = $this->input->post("contacto");
 		$tel_contacto = $this->input->post("tel_contacto");
-		$banco = $this->input->post("banco");
-		$no_cuenta = $this->input->post("no_cuenta");
 
-		$this->form_validation->set_rules("nombre","Nombre","required|is_unique[proveedor.nombre]");
 
-		if ($this->form_validation->run()==TRUE) {
+		$this->form_validation->set_rules("nombre", "Nombre", "required|is_unique[proveedor.nombre]");
+
+		if ($this->form_validation->run() == TRUE) {
 
 			$data  = array(
-				'nombre' => $nombre, 
+				'nombre' => $nombre,
 				'nit' => $nit,
 				'contribuyente_id' => $tipo_contribuyente,
 				'direccion' => $direccion,
@@ -62,39 +64,36 @@ class Proveedor extends CI_Controller {
 				'email' => $email,
 				'contacto' => $contacto,
 				'tel_contacto' => $tel_contacto,
-				'banco' => $banco,
-				'no_cuenta' => $no_cuenta,
+
 				'estado' => "1"
 			);
 
 			if ($this->Proveedor_model->save($data)) {
-				redirect(base_url()."mantenimiento/proveedor");
+				redirect(base_url() . "mantenimiento/proveedor");
+			} else {
+				$this->session->set_flashdata("error", "No se pudo guardar la informacion");
+				redirect(base_url() . "mantenimiento/proveedor/add");
 			}
-			else{
-				$this->session->set_flashdata("error","No se pudo guardar la informacion");
-				redirect(base_url()."mantenimiento/proveedor/add");
-			}
-		}
-		else{
+		} else {
 			/*redirect(base_url()."mantenimiento/categorias/add");*/
 			$this->add();
 		}
-
-		
 	}
 
-	public function edit($id){
+	public function edit($id)
+	{
 		$data  = array(
 			'tipo_contribuyentes' => $this->Contribuyente_model->getContribuyentes(),
-			'proveedor' => $this->Proveedor_model->getProveedor($id), 
+			'proveedor' => $this->Proveedor_model->getProveedor($id),
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
-		$this->load->view("admin/proveedor/edit",$data);
+		$this->load->view("admin/proveedor/edit", $data);
 		$this->load->view("layouts/footer");
 	}
 
-	public function update(){
+	public function update()
+	{
 		$idProveedor = $this->input->post("idProveedor");
 		$nombre = $this->input->post("nombre");
 		$nit = $this->input->post("nit");
@@ -104,23 +103,21 @@ class Proveedor extends CI_Controller {
 		$email = $this->input->post("email");
 		$contacto = $this->input->post("contacto");
 		$tel_contacto = $this->input->post("tel_contacto");
-		$banco = $this->input->post("banco");
-		$no_cuenta = $this->input->post("no_cuenta");
+
 
 		$proveedorActual = $this->Proveedor_model->getProveedor($idProveedor);
 
 		if ($nombre == $proveedorActual->nombre) {
 			$is_unique = "";
-		}else{
+		} else {
 			$is_unique = "|is_unique[proveedor.nombre]";
-
 		}
 
 
-		$this->form_validation->set_rules("nombre","Nombre","required".$is_unique);
-		if ($this->form_validation->run()==TRUE) {
+		$this->form_validation->set_rules("nombre", "Nombre", "required" . $is_unique);
+		if ($this->form_validation->run() == TRUE) {
 			$data = array(
-				'nombre' => $nombre, 
+				'nombre' => $nombre,
 				'nit' => $nit,
 				'contribuyente_id' => $tipo_contribuyente,
 				'direccion' => $direccion,
@@ -128,36 +125,34 @@ class Proveedor extends CI_Controller {
 				'email' => $email,
 				'contacto' => $contacto,
 				'tel_contacto' => $tel_contacto,
-				'banco' => $banco,
-				'no_cuenta' => $no_cuenta,
+
 			);
 
-			if ($this->Proveedor_model->update($idProveedor,$data)) {
-				redirect(base_url()."mantenimiento/proveedor");
+			if ($this->Proveedor_model->update($idProveedor, $data)) {
+				redirect(base_url() . "mantenimiento/proveedor");
+			} else {
+				$this->session->set_flashdata("error", "No se pudo actualizar la informacion");
+				redirect(base_url() . "mantenimiento/proveedor/edit/" . $idProveedor);
 			}
-			else{
-				$this->session->set_flashdata("error","No se pudo actualizar la informacion");
-				redirect(base_url()."mantenimiento/proveedor/edit/".$idProveedor);
-			}
-		}else{
+		} else {
 			$this->edit($idProveedor);
 		}
-
-		
 	}
 
-	public function view($id){
+	public function view($id)
+	{
 		$data  = array(
-			'proveedor' => $this->Proveedor_model->getProveedor($id), 
+			'proveedor' => $this->Proveedor_model->getProveedor($id),
 		);
-		$this->load->view("admin/proveedor/view",$data);
+		$this->load->view("admin/proveedor/view", $data);
 	}
 
-	public function delete($id){
+	public function delete($id)
+	{
 		$data  = array(
-			'estado' => "0", 
+			'estado' => "0",
 		);
-		$this->Proveedor_model->update($id,$data);
+		$this->Proveedor_model->update($id, $data);
 		echo "mantenimiento/proveedor";
 	}
 }
