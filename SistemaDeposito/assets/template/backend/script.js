@@ -957,24 +957,25 @@ $(".btn-info-pedido").on("click", function(){
         }
     });
 
-    $('#inventario1').DataTable( {
+
+    $('#usuarios').DataTable( {
         dom: 'Bfrtip',
         buttons: [
             
             {
                 extend: 'pdfHtml5',
-                title: "Reportes Usuarios",
+                title: "Reporte Usuarios",
                 exportOptions: {
-                    columns: [1,2,3,4,5, 6]
+                    columns: [1,2,3,4,5,6]
                 },
                 
             },
             {
                 extend: 'print',
-                title: "Reportes Usuarios",
+                title: "Reporte Usuarios",
                 text: 'Imprimir',
                 exportOptions: {
-                    columns: [1,2,3,4,5, 6]
+                    columns: [1,2,3,4,5,6]
                 }
                 
             }
@@ -996,6 +997,7 @@ $(".btn-info-pedido").on("click", function(){
             },
         }
     });
+
 
 
 
