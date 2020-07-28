@@ -1,9 +1,11 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Permisos extends CI_Controller {
+class Permisos extends CI_Controller
+{
 	private $permisos;
-	public function __construct(){
+	public function __construct()
+	{
 		parent::__construct();
 		$this->permisos = $this->backend_lib->control();
 		$this->load->model("Permisos_model");
@@ -11,30 +13,33 @@ class Permisos extends CI_Controller {
 		$this->load->model("Ventas_model");
 	}
 
-	public function index(){
+	public function index()
+	{
 		$data  = array(
 			'permits' => $this->permisos,
-			'permisos' => $this->Permisos_model->getPermisos(), 
+			'permisos' => $this->Permisos_model->getPermisos(),
 		);
 
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
-		$this->load->view("admin/permisos/list",$data);
+		$this->load->view("admin/permisos/list", $data);
 		$this->load->view("layouts/footer");
 	}
 
-	public function add(){
+	public function add()
+	{
 		$data  = array(
-			'roles' => $this->Usuarios_model->getRoles(), 
-			'menus' => $this->Permisos_model->getMenus(), 
+			'roles' => $this->Usuarios_model->getRoles(),
+			'menus' => $this->Permisos_model->getMenus(),
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
-		$this->load->view("admin/permisos/add",$data);
+		$this->load->view("admin/permisos/add", $data);
 		$this->load->view("layouts/footer");
 	}
 
-	public function store(){
+	public function store()
+	{
 		$menu = $this->input->post("menu");
 		$rol = $this->input->post("rol");
 		$insert = $this->input->post("insert");
@@ -52,27 +57,28 @@ class Permisos extends CI_Controller {
 		);
 
 		if ($this->Permisos_model->save($data)) {
-			redirect(base_url()."administrador/permisos");
-		}else{
-			$this->session->set_flashdata("error","No se pudo guardar la informacion");
-			redirect(base_url()."administrado/permisos/add");
+			redirect(base_url() . "administrador/permisos");
+		} else {
+			$this->session->set_flashdata("error", "No se pudo guardar la informacion");
+			redirect(base_url() . "administrado/permisos/add");
 		}
-		
 	}
 
-	public function edit($id){
+	public function edit($id)
+	{
 		$data  = array(
-			'roles' => $this->Usuarios_model->getRoles(), 
-			'menus' => $this->Permisos_model->getMenus(), 
+			'roles' => $this->Usuarios_model->getRoles(),
+			'menus' => $this->Permisos_model->getMenus(),
 			'permiso' => $this->Permisos_model->getPermiso($id)
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
-		$this->load->view("admin/permisos/edit",$data);
+		$this->load->view("admin/permisos/edit", $data);
 		$this->load->view("layouts/footer");
 	}
 
-	public function update(){
+	public function update()
+	{
 		$idpermiso = $this->input->post("idpermiso");
 		$menu = $this->input->post("menu");
 		$rol = $this->input->post("rol");
@@ -88,20 +94,25 @@ class Permisos extends CI_Controller {
 			"delete" => $delete,
 		);
 
-		if ($this->Permisos_model->update($idpermiso,$data)) {
-			redirect(base_url()."administrador/permisos");
-		}else{
-			$this->session->set_flashdata("error","No se pudo guardar la informacion");
-			redirect(base_url()."administrador/permisos/edit/".$idpermiso);
+		if ($this->Permisos_model->update($idpermiso, $data)) {
+			redirect(base_url() . "administrador/permisos");
+		} else {
+			$this->session->set_flashdata("error", "No se pudo guardar la informacion");
+			redirect(base_url() . "administrador/permisos/edit/" . $idpermiso);
 		}
 	}
 
-	public function delete($id){
+	public function delete($id)
+	{
 		$this->Permisos_model->delete($id);
-		redirect(base_url()."administrador/permisos");
+		//redirect(base_url()."administrador/permisos");
+		echo "administrador/permisos";
 	}
 
-	public function clavePermiso(){
+
+
+	public function clavePermiso()
+	{
 		$data = array(
 			"clave" => $this->Permisos_model->clave()
 		);
@@ -111,20 +122,20 @@ class Permisos extends CI_Controller {
 		$this->load->view("layouts/footer");
 	}
 
-	public function setClave(){
+	public function setClave()
+	{
 		$idClave = $this->input->post("idClave");
 		$clave = $this->input->post("clave");
 		$data  = array(
-			'clave_permiso' => $clave, 
+			'clave_permiso' => $clave,
 		);
 		if (!empty($idClave)) {
-			
+
 			$this->Permisos_model->updateClave($idClave, $data);
-		}else{
+		} else {
 			$this->Permisos_model->saveClave($data);
 		}
 		$this->session->set_flashdata("success", "La clave de permiso fue guardada");
-		redirect(base_url()."administrador/clave-permiso");
-
+		redirect(base_url() . "administrador/clave-permiso");
 	}
 }
