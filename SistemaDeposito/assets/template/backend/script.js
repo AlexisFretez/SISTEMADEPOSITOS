@@ -957,6 +957,48 @@ $(".btn-info-pedido").on("click", function(){
         }
     });
 
+    $('#inventario1').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            
+            {
+                extend: 'pdfHtml5',
+                title: "Reportes Usuarios",
+                exportOptions: {
+                    columns: [1,2,3,4,5, 6]
+                },
+                
+            },
+            {
+                extend: 'print',
+                title: "Reportes Usuarios",
+                text: 'Imprimir',
+                exportOptions: {
+                    columns: [1,2,3,4,5, 6]
+                }
+                
+            }
+        ],
+
+        language: {
+            "lengthMenu": "Mostrar _MENU_ registros por pagina",
+            "zeroRecords": "No se encontraron resultados en su busqueda",
+            "searchPlaceholder": "Buscar registros",
+            "info": "Mostrando registros de _START_ al _END_ de un total de  _TOTAL_ registros",
+            "infoEmpty": "No existen registros",
+            "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "search": "Buscar:",
+            "paginate": {
+                "first": "Primero",
+                "last": "Último",
+                "next": "Siguiente",
+                "previous": "Anterior"
+            },
+        }
+    });
+
+
+
     $('#inventario-productos').DataTable( {
        dom: 'Bfrtip',
          "footerCallback": function ( row, data, start, end, display ) {

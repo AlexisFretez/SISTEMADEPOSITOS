@@ -16,7 +16,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
-                            <table id="inventario" class="table table-bordered table-hover">
+                            <table id="inventario1" class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -26,8 +26,7 @@
                                         <th>Usuario</th>
                                         <th>Rol</th>
                                         <th>Fecha Creacion</th>
-                                        <th>Cambiar Contraseña</th>
-                                        <th>opciones</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -42,20 +41,8 @@
                                                 <td><?php echo $usuario->rol; ?></td>
                                                 <td><?php echo $usuario->fecha_creacion; ?></td>
 
-                                                <td><button id="change-password" type="buttton" value="<?php echo $usuario->id; ?>" class="btn btn-default" data-toggle="modal" data-target="#modal-password"><i class="fa fa-cogs"></i> Cambiar Contraseña</button></td>
-                                                <td>
-                                                    <div class="btn-group">
-                                                        <button type="button" class="btn btn-info btn-view-usuario" data-toggle="modal" data-target="#modal-default" value="<?php echo $usuario->id; ?>">
-                                                            <span class="fa fa-search"></span>
-                                                        </button>
-                                                        <?php if ($permisos->update == 1) : ?>
-                                                            <a href="<?php echo base_url() ?>administrador/usuarios/edit/<?php echo $usuario->id; ?>" class="btn btn-warning"><span class="fa fa-pencil"></span></a>
-                                                        <?php endif; ?>
-                                                        <?php if ($permisos->delete == 1) : ?>
-                                                            <a href="<?php echo base_url(); ?>administrador/usuarios/delete/<?php echo $usuario->id; ?>" class="btn btn-danger btn-remove"><span class="fa fa-remove"></span></a>
-                                                        <?php endif; ?>
-                                                    </div>
-                                                </td>
+
+
                                             </tr>
                                         <?php endforeach; ?>
                                     <?php endif; ?>
