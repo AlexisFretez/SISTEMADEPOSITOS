@@ -122,3 +122,7 @@ class Marcas extends CI_Controller
 		echo "mantenimiento/marcas";
 	}
 }
+
+
+
+// marca ok
