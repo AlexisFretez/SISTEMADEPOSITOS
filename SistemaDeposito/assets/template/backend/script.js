@@ -958,7 +958,7 @@ $(".btn-info-pedido").on("click", function(){
     });
 
 
-    $('#usuarios').DataTable( {
+    $('#usuarios1').DataTable( {
         dom: 'Bfrtip',
         buttons: [
             
