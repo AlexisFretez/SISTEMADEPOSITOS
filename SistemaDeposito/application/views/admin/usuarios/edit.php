@@ -52,6 +52,11 @@
                                     <?php endforeach; ?>
                                 </select>
                             </div>
+
+                            <div class="form-group">
+                                <label for="codigo">Codigo:</label>
+                                <input type="text" id="codigo" name="codigo" class="form-control" value="<?php echo $usuario->codigo; ?>">
+                            </div>
                             <div class="form-group">
                                 <label for="fecha_creacion">Fecha Creacion:</label>
                                 <input type="date" class="form-control" id="fecha_creacion" name="fecha_creacion" value="<?php echo $usuario->fecha_creacion ?>">

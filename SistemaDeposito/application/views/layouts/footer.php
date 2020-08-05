@@ -23,6 +23,11 @@
         <!-- DataTables -->
         <script src="<?php echo base_url(); ?>assets/template/datatables.net/js/jquery.dataTables.min.js"></script>
         <script src="<?php echo base_url(); ?>assets/template/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+
+        <script src="<?php echo base_url(); ?>assets/template/datatables.net-bs/js/dataTables.responsive.min.js"></script>
+        <script src="<?php echo base_url(); ?>assets/template/datatables.net-bs/js/responsive.bootstrap.min.js"></script>
+
         <!-- DataTables Export -->
         <script src="<?php echo base_url(); ?>assets/template/datatables-export/js/dataTables.buttons.min.js"></script>
         <script src="<?php echo base_url(); ?>assets/template/datatables-export/js/buttons.flash.min.js"></script>

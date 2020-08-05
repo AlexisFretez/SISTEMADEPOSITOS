@@ -8,26 +8,32 @@
                     </tr>
                     <tr>
                         <th>Proveedor:</th>
-                        <td colspan="2"><?php echo $compra->proveedor;?></td>
+                        <td colspan="2"><?php echo $compra->proveedor; ?></td>
                         <th>Serie:</th>
-                        <td><?php echo $compra->serie;?></td>
+                        <td><?php echo $compra->serie; ?></td>
                         <th>No. Comprobante</th>
-                        <td><?php echo $compra->numero;?></td>
+                        <td><?php echo $compra->numero; ?></td>
+
                     </tr>
                     <tr>
-                        <th>NIT:</th>
-                        <td><?php echo $compra->nit;?></td>
+                        <th>RUC:</th>
+                        <td><?php echo $compra->nit; ?></td>
                         <th>Comprobante:</th>
-                        <td colspan="2"><?php echo $compra->comprobante;?></td>
+                        <td colspan="2"><?php echo $compra->comprobante; ?></td>
                         <th>Tipo Pago</th>
-                        <td><?php echo $compra->tipopago;?></td>
+                        <td><?php echo $compra->tipopago; ?></td>
                     </tr>
                     <tr>
                         <th>Direccion:</th>
-                        <td colspan="4"><?php echo $compra->direccion;?></td>
+                        <td colspan="4"><?php echo $compra->direccion; ?></td>
                         <th>Fecha Compra:</th>
-                        <td><?php echo $compra->fecha;?></td>
+                        <td><?php echo $compra->fecha; ?></td>
                     </tr>
+                    <tr>
+                        <th>Almacen / Depositos</th>
+                        <td><?php echo $compra->almacenes; ?></td>
+                    </tr>
+
                 </tbody>
             </table>
             <br>
@@ -42,19 +48,19 @@
                         <th>Precio</th>
                         <th>Importe</th>
                     </tr>
-                    <?php foreach ($detalles as $detalle): ?>
+                    <?php foreach ($detalles as $detalle) : ?>
                         <tr>
-                            <td><?php echo $detalle->cantidad;?></td>
-                            <td><?php echo $detalle->nombre;?></td>
-                            <td><?php echo $detalle->precio;?></td>
-                            <td><?php echo $detalle->importe;?></td>
+                            <td><?php echo $detalle->cantidad; ?></td>
+                            <td><?php echo $detalle->nombre; ?></td>
+                            <td><?php echo $detalle->precio; ?></td>
+                            <td><?php echo $detalle->importe; ?></td>
                         </tr>
                     <?php endforeach ?>
                     <tr>
                         <th colspan="3" class="text-right">Subtotal:</th>
                         <td><?php echo $compra->subtotal; ?></td>
                     </tr>
-                    
+
                     <tr>
                         <th colspan="3" class="text-right">Total:</th>
                         <td><?php echo $compra->total; ?></td>

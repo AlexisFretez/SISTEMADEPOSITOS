@@ -56,6 +56,11 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="codigo">Codigop:</label>
+                                <input type="text" id="codigo" name="codigo" class="form-control">
+                            </div>
+
+                            <div class="form-group">
                                 <label for="fecha_creacion">Fecha de Creacion:</label>
                                 <div class="input-group date">
                                     <div class="input-group-addon">

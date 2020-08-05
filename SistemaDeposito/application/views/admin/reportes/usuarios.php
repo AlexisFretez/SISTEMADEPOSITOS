@@ -25,7 +25,8 @@
                                         <th>Email</th>
                                         <th>Usuario</th>
                                         <th>Rol</th>
-                                        <th>Fecha Creacion</th>
+                                        <th>Codigo</th>
+                                        <th>Fecha Modificacion</th>
 
                                     </tr>
                                 </thead>
@@ -39,6 +40,7 @@
                                                 <td><?php echo $usuario->email; ?></td>
                                                 <td><?php echo $usuario->username; ?></td>
                                                 <td><?php echo $usuario->rol; ?></td>
+                                                <td><?php echo $usuario->codigo; ?></td>
                                                 <td><?php echo $usuario->fecha_creacion; ?></td>
 
 

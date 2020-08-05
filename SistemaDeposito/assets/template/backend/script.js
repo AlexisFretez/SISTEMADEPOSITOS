@@ -975,7 +975,7 @@ $(".btn-info-pedido").on("click", function(){
                 title: "Reporte Usuarios",
                 text: 'Imprimir',
                 exportOptions: {
-                    columns: [1,2,3,4,5,6]
+                    columns: [1,2,4,6,7]
                 }
                 
             }

@@ -46,6 +46,7 @@ class Usuarios extends CI_Controller
 		$username = $this->input->post("username");
 		$password = $this->input->post("password");
 		$rol = $this->input->post("rol");
+		$codigo = $this->input->post("codigo");
 		$fecha_creacion = $this->input->post("fecha_creacion");
 
 		$data  = array(
@@ -56,6 +57,7 @@ class Usuarios extends CI_Controller
 			'username' => $username,
 			'password' => sha1($password),
 			'rol_id' => $rol,
+			'codigo' => $codigo,
 			'fecha_creacion' => $fecha_creacion,
 			'estado' => "1"
 		);
@@ -97,6 +99,7 @@ class Usuarios extends CI_Controller
 		$telefono = $this->input->post("telefono");
 		$email = $this->input->post("email");
 		$username = $this->input->post("username");
+		$codigo = $this->input->post("codigo");
 
 		$rol = $this->input->post("rol");
 		$fecha_creacion = $this->input->post("fecha_creacion");
@@ -107,6 +110,7 @@ class Usuarios extends CI_Controller
 			'telefono' => $telefono,
 			'email' => $email,
 			'username' => $username,
+			'codigo' => $codigo,
 
 			'rol_id' => $rol,
 			'fecha_creacion' => $fecha_creacion,

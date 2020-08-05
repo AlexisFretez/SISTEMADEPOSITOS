@@ -20,6 +20,10 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/template/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <!-- DataTables Export-->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/template/datatables-export/css/buttons.dataTables.min.css">
+
+
+
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/template/datatables.net-bs/css/responsive.bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/template/font-awesome/css/font-awesome.min.css">
     <!--Select 2-->
