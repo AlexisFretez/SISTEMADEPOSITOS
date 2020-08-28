@@ -3,7 +3,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Almacen
+            Deposito
             <small>Editar</small>
         </h1>
     </section>
@@ -32,6 +32,16 @@
                                 <label for="fecha_creacion">Fecha Creacion:</label>
                                 <input type="date" class="form-control" id="fecha_creacion" name="fecha_creacion" value="<?php echo $almacen->fecha_creacion ?>">
 
+                            </div>
+                            <div class="form-group <?php echo form_error('descripcion') == true ? 'has-error' : ''; ?>">
+                                <label for="descripcion">Ubicacion:</label>
+                                <input type="text" class="form-control" id="descripcion" name="descripcion" value="<?php echo $almacen->descripcion ?>">
+                                <?php echo form_error("descripcion", "<span class='help-block'>", "</span>"); ?>
+                            </div>
+                            <div class="form-group <?php echo form_error('precio') == true ? 'has-error' : ''; ?>">
+                                <label for="precio">Costo:</label>
+                                <input type="text" class="form-control" id="precio" name="precio" value="<?php echo $almacen->precio ?>">
+                                <?php echo form_error("precio", "<span class='help-block'>", "</span>"); ?>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success btn-flat">Guardar</button>

@@ -39,6 +39,17 @@
                                     <input type="date" class="form-control" name="fecha" value="<?php echo date("Y-m-d"); ?>" required>
                                 </div>
                             </div>
+                            <div class="form-group <?php echo form_error('descripcion') == true ? 'has-error' : '' ?>">
+                                <label for="descripcion">Ubicacion:</label>
+                                <input type="text" class="form-control" id="descripcion" name="descripcion">
+                                <?php echo form_error("descripcion", "<span class='help-block'>", "</span>"); ?>
+                            </div>
+
+                            <div class="form-group <?php echo form_error('precio') == true ? 'has-error' : '' ?>">
+                                <label for="precio">Precio:</label>
+                                <input type="text" class="form-control" id="precio" name="precio">
+                                <?php echo form_error("precio", "<span class='help-block'>", "</span>"); ?>
+                            </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success btn-flat">Guardar</button>
                                 <a href="<?php echo base_url() . $this->uri->segment(1) . '/' . $this->uri->segment(2); ?>" class="btn btn-danger btn-flat">Volver</a>

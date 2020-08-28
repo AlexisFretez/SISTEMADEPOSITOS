@@ -3,7 +3,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Almacen
+            Deposito
             <small>Listado</small>
         </h1>
     </section>
@@ -16,7 +16,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <?php if ($permisos->insert == 1) : ?>
-                            <a href="<?php echo base_url(); ?>mantenimiento/almacen/add" class="btn btn-primary btn-flat"><span class="fa fa-plus"></span> Agregar Almacen</a>
+                            <a href="<?php echo base_url(); ?>mantenimiento/almacen/add" class="btn btn-primary btn-flat"><span class="fa fa-plus"></span> Agregar Deposito</a>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -30,7 +30,8 @@
                                         <th>#</th>
                                         <th>Nombre</th>
                                         <th>Fecha de Creacion</th>
-                                        <th>Estado</th>
+                                        <th>Ubicacion</th>
+                                        <th>Costo</th>
                                         <th>opciones</th>
                                     </tr>
                                 </thead>
@@ -42,6 +43,7 @@
                                                 <td><?php echo $almacen->nombre; ?></td>
                                                 <td><?php echo $almacen->fecha_creacion; ?></td>
                                                 <td><?php echo $almacen->descripcion; ?></td>
+                                                <td><?php echo $almacen->precio; ?></td>
                                                 <td>
                                                     <div class="btn-group">
                                                         <button type="button" class="btn btn-info btn-view" data-toggle="modal" data-target="#modal-default" value="<?php echo $almacen->id; ?>">

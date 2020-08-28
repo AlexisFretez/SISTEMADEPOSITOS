@@ -39,6 +39,8 @@ class Almacen extends CI_Controller
 
 		$nombre = $this->input->post("nombre");
 		$fecha_creacion = $this->input->post("fecha_creacion");
+		$descripcion = $this->input->post("descripcion");
+		$precio = $this->input->post("precio");
 
 		$this->form_validation->set_rules("nombre", "Nombre", "required|is_unique[almacen.nombre]");
 
@@ -47,6 +49,8 @@ class Almacen extends CI_Controller
 			$data  = array(
 				'nombre' => $nombre,
 				'fecha_creacion' => $fecha_creacion,
+				'descripcion' => $descripcion,
+				'precio' => $precio,
 				'estado' => "1"
 			);
 
@@ -78,6 +82,8 @@ class Almacen extends CI_Controller
 		$idAlmacen = $this->input->post("idAlmacen");
 		$nombre = $this->input->post("nombre");
 		$fecha_creacion = $this->input->post("fecha_creacion");
+		$descripcion = $this->input->post("descripcion");
+		$precio = $this->input->post("precio");
 
 		$almacenactual = $this->Almacen_model->getAlmacen($idAlmacen);
 
@@ -93,6 +99,8 @@ class Almacen extends CI_Controller
 			$data = array(
 				'nombre' => $nombre,
 				'fecha_creacion' => $fecha_creacion,
+				'descripcion' => $descripcion,
+				'precio' => $precio,
 			);
 
 			if ($this->Almacen_model->update($idAlmacen, $data)) {
