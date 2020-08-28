@@ -33,11 +33,11 @@
                                         <th>Marca</th>
                                         <th>Presentacion</th>
 
-                                        <th>Precio</th>
+
                                         <th>Precio de Compra</th>
                                         <th>Stock Min.</th>
                                         <th>Stock</th>
-
+                                        <th>Ubicacion</th>
                                         <th>Categoria</th>
                                         <th>Opciones</th>
                                     </tr>
@@ -56,7 +56,7 @@
                                                 <td><?php echo $producto->marca; ?></td>
                                                 <td><?php echo $producto->presentacion; ?></td>
 
-                                                <td><?php echo $producto->precio; ?></td>
+
                                                 <td><?php echo $producto->precio_compra; ?></td>
 
                                                 <td><?php echo $producto->stock_minimo; ?></td>
@@ -66,7 +66,7 @@
                                                     <td style="color: green;"><b><?php echo $producto->stock; ?></b></td>
                                                 <?php endif ?>
 
-
+                                                <td><?php echo $producto->estanteria; ?></td>
                                                 <td><?php echo $producto->categoria; ?></td>
                                                 <td>
                                                     <div class="btn-group-vertical">
@@ -107,7 +107,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Informacion del Deposito</h4>
+                <h4 class="modal-title">Informacion del Producto</h4>
             </div>
             <div class="modal-body">
 

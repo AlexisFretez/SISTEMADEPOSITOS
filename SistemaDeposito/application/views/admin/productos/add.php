@@ -3,7 +3,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Productos
+            Depositos
             <small>Nuevo</small>
         </h1>
     </section>
@@ -45,7 +45,7 @@
                             </div>
 
                             <div class="form-group <?php echo !empty(form_error('precio_compra')) ? 'has-error' : ''; ?>">
-                                <label for="precio_compra">Precio Compra:</label>
+                                <label for="precio_compra">Costo:</label>
                                 <input type="text" class="form-control" id="precio_compra" name="precio_compra" required value="<?php echo set_value('precio_compra'); ?>">
                                 <?php echo form_error("precio_compra", "<span class='help-block'>", "</span>"); ?>
                             </div>
@@ -107,7 +107,7 @@
                                 </select>
                             </div>
                             <div class="form-group <?php echo !empty(form_error('estanteria')) ? 'has-error' : ''; ?>">
-                                <label for="estanteria">Estanteria:</label>
+                                <label for="estanteria">Ubicacion:</label>
                                 <input type="text" class="form-control" id="estanteria" name="estanteria" required value="<?php echo set_value('estanteria'); ?>">
                                 <?php echo form_error("estanteria", "<span class='help-block'>", "</span>"); ?>
                             </div>

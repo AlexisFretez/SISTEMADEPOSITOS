@@ -67,7 +67,7 @@ class Compras extends CI_Controller
 	{
 		$comprobante = $this->input->post("comprobante");
 		$tipo_pago = $this->input->post("tipo_pago");
-		$almacen = $this->input->post("almacen");
+		//$almacen = $this->input->post("almacen");
 		$serie = $this->input->post("serie");
 		$numero = $this->input->post("numero");
 		$fecha = $this->input->post("fecha");
@@ -92,7 +92,7 @@ class Compras extends CI_Controller
 			'comprobante' => $comprobante,
 			'proveedor_id' => $idproveedor,
 			'tipo_pago_id' => $tipo_pago,
-			'almacen_id' => $almacen,
+			//'almacen_id' => $almacen,
 			'usuario_id' => $this->session->userdata('id'),
 			'estado' => 1,
 		);

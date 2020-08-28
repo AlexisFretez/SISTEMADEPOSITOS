@@ -3,7 +3,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Entrada
+            Compras
             <small>Nueva</small>
         </h1>
     </section>
@@ -20,12 +20,12 @@
                                                                                 ?>">-->
 
                             <div class="col-md-12">
-                                <label for="">Depositos:</label>
+                                <label for="">Producto:</label>
                                 <div class="input-group barcode">
                                     <div class="input-group-addon">
                                         <i class="fa fa-barcode"></i>
                                     </div>
-                                    <input type="text" class="form-control" id="searchProductoCompra" placeholder="Buscar por codigo de barras o nombre del Deposito">
+                                    <input type="text" class="form-control" id="searchProductoCompra" placeholder="Buscar por codigo de barras o nombre del proucto">
                                 </div>
 
                             </div>
@@ -57,6 +57,14 @@
                         <input type="text" name="comprobante" class="form-control">
 
 
+                        <label for="">Almacen / Deposito :</label>
+                        <select name="almacen" id="almacen" class="form-control" required>
+                            <option value="">Seleccione...</option>
+                            <?php foreach ($almacenes as $almacen) : ?>
+                                <option value="<?php echo $almacen->id ?>"><?php echo $almacen->nombre ?></option>
+                            <?php endforeach ?>
+
+                        </select>
 
 
                         <label for="">Tipo de Pago:</label>
@@ -76,10 +84,10 @@
                         <input type="text" class="form-control" name="numero" placeholder="Escriba el No. de Factura">
 
                         <label for="">Fecha de Compra:</label>
-                        <input type="date" class="form-control" name="fecha" value="<?php echo date("Y-m-d"); ?>" required readonly>
+                        <input type="date" class="form-control" name="fecha" value="<?php echo date("Y-m-d"); ?>" required>
 
-                        <label for="">Empresa/Cliente:</label>
-                        <input type="text" class="form-control" name="proveedor" id="proveedor" placeholder="Escriba el nombre de la Empresa">
+                        <label for="">Proveedor:</label>
+                        <input type="text" class="form-control" name="proveedor" id="proveedor" placeholder="Escriba el nombre del Proveedor">
                         <input type="hidden" name="idproveedor" id="idproveedor">
 
 

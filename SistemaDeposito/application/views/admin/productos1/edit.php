@@ -3,7 +3,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Deposito
+            Depositos
             <small>Editar</small>
         </h1>
     </section>
@@ -47,7 +47,7 @@
                             </div>
 
                             <div class="form-group <?php echo !empty(form_error('precio_compra')) ? 'has-error' : ''; ?>">
-                                <label for="precio_compra">Costo</label>
+                                <label for="precio_compra">Costo:</label>
                                 <input type="text" class="form-control" id="precio_compra" name="precio_compra" required value="<?php echo set_value('precio_compra') ?: $producto->precio_compra; ?>">
                                 <?php echo form_error("precio_compra", "<span class='help-block'>", "</span>"); ?>
                             </div>
@@ -93,11 +93,7 @@
                                 <label for="descripcion">Descripcion:</label>
                                 <input type="text" class="form-control" id="descripcion" name="descripcion" value="<?php echo $producto->descripcion; ?>" required>
                             </div>
-                            <div class="form-group <?php echo !empty(form_error('precio')) ? 'has-error' : ''; ?>">
-                                <label for="precio">Precio:</label>
-                                <input type="text" class="form-control" id="precio" name="precio" required value="<?php echo set_value('precio') ?: $producto->precio; ?>">
-                                <?php echo form_error("precio", "<span class='help-block'>", "</span>"); ?>
-                            </div>
+
                             <div class="form-group">
                                 <label for="presentacion">Presentacion:</label>
                                 <select name="presentacion" id="presentacion" class="form-control" required>

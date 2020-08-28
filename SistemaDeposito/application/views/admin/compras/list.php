@@ -3,7 +3,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Compras
+            Depositos
+            <small>Listado</small>
         </h1>
     </section>
     <!-- Main content -->
@@ -14,7 +15,7 @@
                 <div class="row">
                     <div class="col-md-12">
 
-                        <a href="<?php echo base_url(); ?>movimientos/compras/add" class="btn btn-primary btn-flat"><span class="fa fa-plus"></span> Nueva Compra</a>
+                        <a href="<?php echo base_url(); ?>movimientos/compras/add" class="btn btn-primary btn-flat"><span class="fa fa-plus"></span> Nuevo Deposito</a>
 
                     </div>
                 </div>
@@ -30,9 +31,10 @@
                                     <th>Serie y No. Documento</th>
                                     <th>Proveedor</th>
                                     <th>RUC</th>
-                                    <th>Almacen/Deposito</th>
+
                                     <th>Tipo de Pago</th>
                                     <th>Total</th>
+                                    <th>Estado</th>
                                     <th>Opciones</th>
                                 </tr>
                             </thead>
@@ -47,13 +49,33 @@
 
                                             <td><?php echo $compra->proveedor; ?></td>
                                             <td><?php echo $compra->nit; ?></td>
-                                            <td><?php echo $compra->almacenes; ?></td>
+
                                             <td><?php echo $compra->tipopago; ?></td>
                                             <td><?php echo $compra->total; ?></td>
+                                            <td>
+                                                <?php if ($compra->estado == "1") {
+                                                    echo '<span class="label label-success">En Deposito</span>';
+                                                } else if ($compra->estado == "2") {
+                                                    echo '<span class="label label-warning">Pendiente</span>';
+                                                } else {
+                                                    echo '<span class="label label-danger">Anulado</span>';
+                                                } ?>
+                                            </td>
 
                                             <td>
                                                 <div class="btn-group">
                                                     <button type="button" class="btn btn-success btn-info-compra" data-toggle="modal" data-target="#modal-compra" value="<?php echo $compra->id; ?>"><span class="fa fa-search"></span></button>
+
+                                                    <?php if ($compra->estado != 0) : ?>
+
+
+                                                        <?php if ($permisos->update == 1) : ?>
+                                                            <a href="<?php echo base_url() ?>movimientos/compras/edit/<?php echo $compra->id; ?>" class="btn btn-warning"><span class="fa fa-pencil"></span></a>
+                                                        <?php endif; ?>
+                                                        <?php if ($permisos->delete == 1) : ?>
+                                                            <a href="<?php echo base_url(); ?>movimientos/compras/delete/<?php echo $compra->id; ?>" class="btn btn-danger btn-remove"><span class="fa fa-remove"></span></a>
+                                                        <?php endif; ?>
+                                                    <?php endif ?>
 
                                                 </div>
                                             </td>

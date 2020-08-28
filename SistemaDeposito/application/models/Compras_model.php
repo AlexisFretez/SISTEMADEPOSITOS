@@ -8,11 +8,11 @@ class Compras_model extends CI_Model
 	{
 		$this->db->select("c.*,p.nit,p.nombre as proveedor,tp.nombre as tipopago, u.nombres");
 
-		$this->db->select("c.*,al.nombre as almacenes,");
+		//$this->db->select("c.*,al.nombre as almacenes,");
 
 		$this->db->from("compras c");
 		$this->db->join("proveedor p", "c.proveedor_id = p.id");
-		$this->db->join("almacen al", "c.almacen_id = al.id");
+		//$this->db->join("almacen al", "c.almacen_id = al.id");
 		$this->db->join("tipo_pago tp", "c.tipo_pago_id = tp.id");
 		$this->db->join("usuarios u", "c.usuario_id = u.id");
 
@@ -27,11 +27,11 @@ class Compras_model extends CI_Model
 	public function getCompra($id)
 	{
 		$this->db->select("c.*,p.nombre as proveedor,p.nit,p.direccion,tp.nombre as tipopago");
-		$this->db->select("c.*,al.nombre as almacenes,");
+		//$this->db->select("c.*,al.nombre as almacenes,");
 		$this->db->from("compras c");
 		$this->db->join("proveedor p", "c.proveedor_id = p.id");
 		$this->db->join("tipo_pago tp", "c.tipo_pago_id = tp.id");
-		$this->db->join("almacen al", "c.almacen_id = al.id");
+		//$this->db->join("almacen al", "c.almacen_id = al.id");
 		$this->db->where("c.id", $id);
 		$resultados = $this->db->get();
 		if ($resultados->num_rows() > 0) {

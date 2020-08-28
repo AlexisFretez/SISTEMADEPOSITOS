@@ -4,10 +4,10 @@
             <table border="1" width="100%">
                 <tbody>
                     <tr>
-                        <th colspan="7" class="text-center">Informacion del Proveedor</th>
+                        <th colspan="7" class="text-center">Informacion de la Empresa</th>
                     </tr>
                     <tr>
-                        <th>Proveedor:</th>
+                        <th>Empresa:</th>
                         <td colspan="2"><?php echo $compra->proveedor; ?></td>
                         <th>Serie:</th>
                         <td><?php echo $compra->serie; ?></td>
@@ -26,13 +26,10 @@
                     <tr>
                         <th>Direccion:</th>
                         <td colspan="4"><?php echo $compra->direccion; ?></td>
-                        <th>Fecha Compra:</th>
+                        <th>Fecha Entrada:</th>
                         <td><?php echo $compra->fecha; ?></td>
                     </tr>
-                    <tr>
-                        <th>Almacen / Depositos</th>
-                        <td><?php echo $compra->almacenes; ?></td>
-                    </tr>
+
 
                 </tbody>
             </table>
@@ -40,11 +37,11 @@
             <table border="1" width="100%">
                 <tbody>
                     <tr>
-                        <th colspan="4" class="text-center">Detalle de la Compra</th>
+                        <th colspan="4" class="text-center">Detalle de la Entrada</th>
                     </tr>
                     <tr>
                         <th>Cantidad</th>
-                        <th>Producto</th>
+                        <th>Deposito</th>
                         <th>Precio</th>
                         <th>Importe</th>
                     </tr>

@@ -3,7 +3,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Proveedores
+            Empresa
             <small>Listado</small>
         </h1>
     </section>
@@ -16,7 +16,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <?php if ($permisos->insert == 1) : ?>
-                            <a href="<?php echo base_url(); ?>mantenimiento/proveedor/add" class="btn btn-primary btn-flat"><span class="fa fa-plus"></span> Agregar Proveedor</a>
+                            <a href="<?php echo base_url(); ?>mantenimiento/proveedor/add" class="btn btn-primary btn-flat"><span class="fa fa-plus"></span> Agregar Empresa</a>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -91,7 +91,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Informacion del Proveedor</h4>
+                <h4 class="modal-title">Informacion de la Empresa</h4>
             </div>
             <div class="modal-body">
 
