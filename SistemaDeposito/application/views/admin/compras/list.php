@@ -29,7 +29,7 @@
                                     <th>Fecha</th>
                                     <th>Comprobante</th>
                                     <th>Serie y No. Documento</th>
-                                    <th>Proveedor</th>
+                                    <th>EMPRESA</th>
                                     <th>RUC</th>
 
                                     <th>Tipo de Pago</th>
@@ -54,7 +54,7 @@
                                             <td><?php echo $compra->total; ?></td>
                                             <td>
                                                 <?php if ($compra->estado == "1") {
-                                                    echo '<span class="label label-success">En Deposito</span>';
+                                                    echo '<span class="label label-success">Guardado</span>';
                                                 } else if ($compra->estado == "2") {
                                                     echo '<span class="label label-warning">Pendiente</span>';
                                                 } else {

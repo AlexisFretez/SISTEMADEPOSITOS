@@ -39,7 +39,7 @@
                             </div>
 
                             <div class="form-group <?php echo !empty(form_error('nombre')) ? 'has-error' : ''; ?>">
-                                <label for="nombre">Nombre:</label>
+                                <label for="nombre">Nombre Deposito:</label>
                                 <input type="text" class="form-control" id="nombre" name="nombre" required value="<?php echo set_value('nombre'); ?>">
                                 <?php echo form_error("nombre", "<span class='help-block'>", "</span>"); ?>
                             </div>

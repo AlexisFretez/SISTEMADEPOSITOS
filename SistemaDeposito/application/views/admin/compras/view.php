@@ -42,7 +42,7 @@
                     <tr>
                         <th>Cantidad</th>
                         <th>Deposito</th>
-                        <th>Precio</th>
+                        <th>Costo</th>
                         <th>Importe</th>
                     </tr>
                     <?php foreach ($detalles as $detalle) : ?>
@@ -53,6 +53,7 @@
                             <td><?php echo $detalle->importe; ?></td>
                         </tr>
                     <?php endforeach ?>
+
                     <tr>
                         <th colspan="3" class="text-right">Subtotal:</th>
                         <td><?php echo $compra->subtotal; ?></td>
@@ -61,6 +62,10 @@
                     <tr>
                         <th colspan="3" class="text-right">Total:</th>
                         <td><?php echo $compra->total; ?></td>
+                    </tr>
+                    <tr>
+                        <th colspan="3" class="text-right">Descripcion Arti Guardado</th>
+                        <td><?php echo $compra->descripcion; ?></td>
                     </tr>
                 </tbody>
             </table>

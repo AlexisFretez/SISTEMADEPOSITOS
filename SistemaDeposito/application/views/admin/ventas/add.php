@@ -32,8 +32,7 @@ $iva = "0"; ?>
                     <div class="col-md-9">
                         <input type="hidden" id="modulo" value="ventas">
                         <form action="<?php echo base_url(); ?>movimientos/ventas/store" method="POST" class="form-horizontal">
-                            <!--   <input type="hidden" name="estado" value="<? php // echo $estado; 
-                                                                                ?>">-->
+
 
                             <div class="col-md-12">
                                 <label for="">Producto:</label>

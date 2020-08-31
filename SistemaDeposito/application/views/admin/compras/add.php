@@ -36,9 +36,9 @@
                                         <tr>
                                             <th>Codigo</th>
                                             <th>Nombre</th>
-                                            <th>Marca</th>
-                                            <th>Precio</th>
-                                            <th>Cantidad</th>
+                                            <th>Marca a Guardar</th>
+                                            <th>Costo</th>
+                                            <th>Cantidad Dias</th>
                                             <th>Importe</th>
                                             <th></th>
                                         </tr>
@@ -67,6 +67,8 @@
                             <?php endforeach ?>
 
                         </select>
+                        <label for="">Descripcion Articulo:</label>
+                        <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Escriba la Descripcion a guardar">
 
                         <label for="">Serie:</label>
                         <input type="text" class="form-control" id="serie" name="serie" placeholder="Escriba la Serie">
@@ -75,8 +77,10 @@
                         <label for="">No. Comprobante:</label>
                         <input type="text" class="form-control" name="numero" placeholder="Escriba el No. de Factura">
 
-                        <label for="">Fecha de Compra:</label>
+                        <label for="">Fecha de Entrada:</label>
                         <input type="date" class="form-control" name="fecha" value="<?php echo date("Y-m-d"); ?>" required readonly>
+
+
 
                         <label for="">Empresa/Cliente:</label>
                         <input type="text" class="form-control" name="proveedor" id="proveedor" placeholder="Escriba el nombre de la Empresa">

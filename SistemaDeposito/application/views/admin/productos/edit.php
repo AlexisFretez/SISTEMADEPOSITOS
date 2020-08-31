@@ -41,7 +41,7 @@
                             </div>
 
                             <div class="form-group <?php echo !empty(form_error('nombre')) ? 'has-error' : ''; ?>">
-                                <label for="nombre">Nombre:</label>
+                                <label for="nombre">Nombre Deposito:</label>
                                 <input type="text" class="form-control" id="nombre" name="nombre" required value="<?php echo set_value('nombre') ?: $producto->nombre; ?>">
                                 <?php echo form_error("nombre", "<span class='help-block'>", "</span>"); ?>
                             </div>
@@ -94,7 +94,7 @@
                                 <input type="text" class="form-control" id="descripcion" name="descripcion" value="<?php echo $producto->descripcion; ?>" required>
                             </div>
                             <div class="form-group <?php echo !empty(form_error('precio')) ? 'has-error' : ''; ?>">
-                                <label for="precio">Precio:</label>
+                                <label for="precio">Capacidad:</label>
                                 <input type="text" class="form-control" id="precio" name="precio" required value="<?php echo set_value('precio') ?: $producto->precio; ?>">
                                 <?php echo form_error("precio", "<span class='help-block'>", "</span>"); ?>
                             </div>

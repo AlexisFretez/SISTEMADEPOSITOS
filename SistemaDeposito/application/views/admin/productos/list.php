@@ -29,12 +29,12 @@
                                         <th>#</th>
                                         <th>Cod. Barras</th>
                                         <th>Imagen</th>
-                                        <th>Nombre</th>
+                                        <th>Nombre Deposito</th>
                                         <th>Marca</th>
                                         <th>Presentacion</th>
 
                                         <th>Precio</th>
-                                        <th>Precio de Compra</th>
+                                        <th>Capacidad</th>
                                         <th>Stock Min.</th>
                                         <th>Stock</th>
 
