@@ -32,7 +32,8 @@ $iva = "0"; ?>
                     <div class="col-md-9">
                         <input type="hidden" id="modulo" value="ventas">
                         <form action="<?php echo base_url(); ?>movimientos/ventas/store" method="POST" class="form-horizontal">
-
+                            <!--   <input type="hidden" name="estado" value="<? php // echo $estado; 
+                                                                                ?>">-->
 
                             <div class="col-md-12">
                                 <label for="">Producto:</label>
@@ -98,7 +99,10 @@ $iva = "0"; ?>
                         <label for="">Solicitante:</label>
                         <div class="input-group">
                             <input type="hidden" name="idcliente" id="idcliente">
-                            <input type="text" class="form-control" " id=" cliente">
+                            <input type="text" class="form-control" name="cliente" id="cliente">
+
+
+
                             <span class="input-group-btn">
                                 <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modal-default"><span class="fa fa-search"></span> Buscar</button>
                             </span>

@@ -1124,6 +1124,14 @@ $(".btn-info-pedido").on("click", function(){
         $("#cliente").val(infocliente[1]);
         $("#modal-default").modal("hide");
     });
+
+    $(document).on("click",".btn-check",function(){
+        proveedor = $(this).val();
+        infoproveedor = proveedor.split("*");
+        $("#idproveedor").val(infoproveedor[0]);
+        $("#proveedor").val(infoproveedor[1]);
+        $("#modal-compras").modal("hide");
+    });
     $("#proveedor").autocomplete({
         source:function(request, response){
             $.ajax({
@@ -1167,6 +1175,7 @@ $(".btn-info-pedido").on("click", function(){
             html +="<td><input type='hidden' name='precios[]' value='"+ui.item.precio_compra+"'>"+ui.item.precio_compra+"</td>";
             html +="<td><input type='text' name='cantidades[]' class='cantidadesCompra' value='1'></td>";
             html +="<td><input type='hidden' name='importes[]' value='"+ui.item.precio_compra+"'><p>"+ui.item.precio_compra+"</p></td>";
+            html +="<td><input type='text' name='descripcion[]' value='"+ui.item.descripcion+"'><p>"
             html +="<td><button type='button' class='btn btn-danger btn-remove-producto-compra'><span class='fa fa-times'></span></button></td>";
             html +="</tr>"
 
@@ -1273,6 +1282,7 @@ $(".btn-info-pedido").on("click", function(){
             sumar();
             $("#btn-agregar").val(null);
             $("#producto").val(null);
+            
 
         }else{
             alertify.error("Seleccione un producto...");
