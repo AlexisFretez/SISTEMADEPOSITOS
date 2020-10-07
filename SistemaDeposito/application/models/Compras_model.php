@@ -34,7 +34,7 @@ class Compras_model extends CI_Model
 	public function getCompra($id)
 	{
 		$this->db->select("c.*,p.nombre as proveedor,p.nit,p.direccion");
-		$this->db->select("c.*,al.nombre as almacenes,");
+		$this->db->select("c.*,al.nombre as almacenes,al.precio as Costo");
 		$this->db->from("compras c");
 		$this->db->join("proveedor p", "c.proveedor_id = p.id");
 		//$this->db->join("tipo_pago tp", "c.tipo_pago_id = tp.id");
@@ -47,6 +47,8 @@ class Compras_model extends CI_Model
 			return false;
 		}
 	}
+
+
 
 	public function getDetalle($id)
 	{
@@ -170,7 +172,7 @@ class Compras_model extends CI_Model
 
 	public function save_detalle($data)
 	{
-		$this->db->insert("detalle_venta", $data);
+		$this->db->insert("detalle_compra", $data);
 	}
 
 	public function years()
@@ -228,7 +230,7 @@ class Compras_model extends CI_Model
 	public function update($id, $data)
 	{
 		$this->db->where("id", $id);
-		return $this->db->update("ventas", $data);
+		return $this->db->update("compras", $data);
 	}
 
 	public function comprobarPassword($password)

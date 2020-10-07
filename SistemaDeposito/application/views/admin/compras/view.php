@@ -17,16 +17,16 @@
                     </tr>
                     <tr>
                         <th>RUC:</th>
-                        <td><?php echo $compra->nit; ?></td>
-                        <th>Descripcion:</th>
-                        <td colspan="2"><?php echo $compra->comprobante; ?></td>
+                        <td colspan="3"><?php echo $compra->nit; ?></td>
+                        <th>Deposito:</th>
+                        <td colspan="2"><?php echo $compra->almacenes; ?></td>
 
                     </tr>
                     <tr>
                         <th>Direccion:</th>
                         <td colspan="4"><?php echo $compra->direccion; ?></td>
-                        <th>Fecha Entrada:</th>
-                        <td><?php echo $compra->fecha; ?></td>
+                        <th>Fecha:</th>
+                        <td><?php echo date("d-m-Y\  H:i", strtotime($compra->fecha)); ?></td>
                     </tr>
 
 
@@ -48,9 +48,18 @@
                     </tr>
                 <?php endforeach ?>
 
+                <th>Costo por Dia:</th>
+                <td><?php echo $compra->Costo; ?></td> <br>
 
+                <th>Total Dias:</th>
+                <td><?php echo $compra->dias; ?></td>
 
                 </tbody>
+            </table>
+            <br>
+            <table border="1" width="50%">
+                <th>Total : <?php echo $compra->a_pagar; ?></th>
+
             </table>
         </div>
     </div>

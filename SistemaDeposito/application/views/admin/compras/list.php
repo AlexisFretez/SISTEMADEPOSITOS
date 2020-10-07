@@ -1,3 +1,14 @@
+<?php if ($this->session->flashdata("success")) : ?>
+    <script>
+        swal("Registro Actualizado!", "<?php echo $this->session->flashdata("success"); ?>", "success");
+    </script>
+<?php endif ?>
+<?php if ($this->session->flashdata("error")) : ?>
+    <script>
+        swal("Error al Registrar!", "Haz click en el botón para volver intentarlo.", "error");
+    </script>
+<?php endif ?>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -27,19 +38,24 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Fecha</th>
-                                    <th>Descripcion</th>
+                                    <th>Observacion</th>
                                     <th>Empresa/Cliente</th>
                                     <th>Depositos</th>
                                     <th>Estado</th>
                                     <th>Opciones</th>
                                 </tr>
                             </thead>
+
                             <tbody>
                                 <?php if (!empty($compras)) : ?>
                                     <?php foreach ($compras as $compra) : ?>
+
+
                                         <tr>
                                             <td><?php echo $compra->id; ?></td>
-                                            <td><?php echo $compra->fecha; ?></td>
+                                            <td><?php echo date("d-m-Y\  H:i", strtotime($compra->fecha)); ?></td>
+
+                                            <!-- <td><?php echo $compra->fecha; ?></td> -->
                                             <td><?php echo $compra->comprobante; ?></td>
 
                                             <td><?php echo $compra->proveedor; ?></td>
@@ -49,32 +65,34 @@
                                                 <?php if ($compra->estado == "1") {
                                                     echo '<span class="label label-success">En Deposito</span>';
                                                 } else if ($compra->estado == "2") {
-                                                    echo '<span class="label label-warning">Pendiente</span>';
+                                                    echo '<span class="label label-primary">Retirado</span>';
                                                 } else {
                                                     echo '<span class="label label-danger">Anulado</span>';
                                                 } ?>
                                             </td>
-
                                             <td>
-                                                <div class="btn-group">
-                                                    <button type="button" class="btn btn-success btn-info-compra" data-toggle="modal" data-target="#modal-compra" value="<?php echo $compra->id; ?>"><span class="fa fa-search"></span></button>
+                                                <button type="button" class="btn btn-success btn-info-compra" data-toggle="modal" data-target="#modal-compra" value="<?php echo $compra->id; ?>"><span class="fa fa-search"></span></button>
+                                                <?php if ($permisos->update == 1) : ?>
 
-                                                    <?php if ($compra->estado != 0) : ?>
-
-
-                                                        <?php if ($permisos->update == 1) : ?>
-                                                            <a href="<?php echo base_url() ?>movimientos/compras/edit/<?php echo $compra->id; ?>" class="btn btn-warning"><span class="fa fa-pencil"></span></a>
-                                                        <?php endif; ?>
-                                                        <?php if ($permisos->delete == 1) : ?>
-                                                            <a href="<?php echo base_url(); ?>movimientos/compras/delete/<?php echo $compra->id; ?>" class="btn btn-danger btn-remove"><span class="fa fa-remove"></span></a>
-                                                        <?php endif; ?>
+                                                    <?php if ($compra->estado == "1") : ?>
+                                                        <a href="<?php echo base_url() ?>movimientos/compras/edit/<?php echo $compra->id; ?>" class="btn btn-warning"><span class="fa fa-check-square-o"></span></a>
                                                     <?php endif ?>
 
-                                                </div>
+                                                <?php endif; ?>
+                                                <?php if ($permisos->delete == 1) : ?>
+                                                    <?php if ($compra->estado == "1") : ?>
+                                                        <a href="<?php echo base_url(); ?>movimientos/compras/delete/<?php echo $compra->id; ?>" class="btn btn-primary btn-remove"><span class="glyphicon glyphicon-sort"></span></a>
+                                                    <?php endif ?>
+                                                <?php endif; ?>
                                             </td>
                                         </tr>
+
+
+
+
+
                                     <?php endforeach; ?>
-                                <?php endif; ?>
+                                <?php endif ?>
                             </tbody>
                         </table>
                     </div>

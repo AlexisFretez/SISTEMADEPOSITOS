@@ -27,16 +27,10 @@
                                 <input type="text" class="form-control" id="nombre" name="nombre">
                                 <?php echo form_error("nombre", "<span class='help-block'>", "</span>"); ?>
                             </div>
-                            <div class="form-group">
-                                <label for="fecha_creacion">Fecha de Creacion:</label>
-                                <div class="input-group date">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                    </div>
-                                    <label for="">Fecha de Entrada:</label>
-                                    <input type="datetime" class="form-control" name="fecha_creacion" id="fecha_creacion" step="1" min="2013-01-01-00:00Z" max="2013-12-31-12:00" value="<?php echo date("Y-m-d\TH-:i"); ?>" readonly>
-                                </div>
-                            </div>
+
+
+                            <input type="hidden" class="form-control" name="fecha_creacion" id="fecha_creacion" step="1" min="2013-01-01-00:00Z" max="2013-12-31-12:00" value="<?php echo date("Y-m-d\TH-:i"); ?>" readonly>
+
                             <div class="form-group <?php echo form_error('descripcion') == true ? 'has-error' : '' ?>">
                                 <label for="descripcion">Ubicacion:</label>
                                 <input type="text" class="form-control" id="descripcion" name="descripcion">
@@ -44,7 +38,7 @@
                             </div>
 
                             <div class="form-group <?php echo form_error('precio') == true ? 'has-error' : '' ?>">
-                                <label for="precio">Costo por Mes:</label>
+                                <label for="precio">Costo por Dia:</label>
                                 <input type="text" class="form-control" id="precio" name="precio">
                                 <?php echo form_error("precio", "<span class='help-block'>", "</span>"); ?>
                             </div>

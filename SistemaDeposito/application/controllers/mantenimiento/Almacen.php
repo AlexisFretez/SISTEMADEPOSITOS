@@ -5,6 +5,7 @@ class Almacen extends CI_Controller
 {
 
 	private $permisos;
+	private $modulo = "Almacen";
 	public function __construct()
 	{
 		parent::__construct();
@@ -55,6 +56,8 @@ class Almacen extends CI_Controller
 			);
 
 			if ($this->Almacen_model->save($data)) {
+				$this->backend_lib->savelog($this->modulo, "Actualización del Office con nombre " . $nombre);
+				$this->session->set_flashdata("success", "Los datos fueron guardados exitosamente");
 				redirect(base_url() . "mantenimiento/almacen");
 			} else {
 				$this->session->set_flashdata("error", "No se pudo guardar la informacion");
@@ -104,6 +107,8 @@ class Almacen extends CI_Controller
 			);
 
 			if ($this->Almacen_model->update($idAlmacen, $data)) {
+				$this->backend_lib->savelog($this->modulo, "Actualización del Office con nombre " . $nombre);
+				$this->session->set_flashdata("success", "Los datos fueron Editados exitosamente");
 				redirect(base_url() . "mantenimiento/almacen");
 			} else {
 				$this->session->set_flashdata("error", "No se pudo actualizar la informacion");

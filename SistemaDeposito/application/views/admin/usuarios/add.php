@@ -56,7 +56,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="codigo">Codigop:</label>
+                                <label for="codigo">Codigo:</label>
                                 <input type="text" id="codigo" name="codigo" class="form-control">
                             </div>
 

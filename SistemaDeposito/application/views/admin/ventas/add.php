@@ -20,6 +20,18 @@ $iva = "0"; ?>
 
             printf($days);
             ?>
+
+            <?php
+
+            $primero_numero = 1000;
+            $segundo_numero = 5555;
+            $resultado = $primero_numero + $segundo_numero;
+
+            $string = "string";
+
+            echo $resultado . "\n";
+            echo $string;
+            ?>
         </h1>
     </section>
     <!-- Main content -->

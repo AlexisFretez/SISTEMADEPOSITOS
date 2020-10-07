@@ -26,7 +26,6 @@
                             <div class="col-md-4">
                                 <input type="submit" name="buscar" value="Buscar" class="btn btn-primary">
                                 <a href="<?php echo base_url(); ?>reportes/compras" class="btn btn-danger">Restablecer</a>
-                                <a href="<?php echo base_url(); ?>reportes/grafica" class="btn btn-danger">Restablecer</a>
                             </div>
                         </div>
                     </form>
@@ -57,15 +56,16 @@
                                             <td><?php echo $compra->nombres; ?></td>
                                             <td><?php echo $compra->serie; ?></td>
                                             <td><?php echo $compra->almacenes; ?></td>
-                                            <td><?php echo $compra->fecha; ?></td>
+                                            <td><?php echo date("d-m-Y\  H:i", strtotime($compra->fecha)); ?></td>
+                                            <!-- /.box-body <td><?php echo $compra->fecha; ?></td>-->
                                             <td><?php echo $compra->costo; ?></td>
                                             <td>
                                                 <?php if ($compra->estado == "1") {
                                                     echo '<span class="label label-success">En Deposito</span>';
                                                 } else if ($compra->estado == "2") {
-                                                    echo '<span class="label label-warning">Pendiente</span>';
+                                                    echo '<span class="label label-primary">Retirado</span>';
                                                 } else {
-                                                    echo '<span class="label label-danger">Anulado</span>';
+                                                    echo '<span class="label label-primary">Anulado</span>';
                                                 } ?>
 
                                             </td>

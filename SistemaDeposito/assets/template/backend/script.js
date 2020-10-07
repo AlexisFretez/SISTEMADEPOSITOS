@@ -456,6 +456,31 @@ $(".btn-info-pedido").on("click", function(){
     });
 
 
+
+    //El que hace el calculo de a_pagar - monto recibido
+
+    function sumarVenta1(){
+        subtotal = 0;
+        $("#tbventas tbody tr").each(function(){
+            //subtotal = subtotal + Number($(this).children("td:eq(6)").find('input').val());
+        });
+
+       // $("input[name=subtotal]").val(subtotal.toFixed(2));
+       // descuento = Number($("#descuento").val());
+        //porcentaje = Number($("#iva").val());
+        //iva = subtotal * (porcentaje/100);
+        //$("input[name=iva]").val(iva.toFixed(2));
+        //a_apagar = subtotal + iva - descuento;
+        $("input[name=a_pagar]").val(a_apagar.toFixed(2));
+    }
+
+    $("#monto_recibido").on("keyup", function(){
+        monto_recibido = Number($(this).val());
+        a_apagar = Number($("input[name=a_pagar]").val());
+        $("input[name=cambio]").val((monto_recibido - a_apagar).toFixed(2));
+    });
+
+
     //old code
     $("#cantEliminar").on("keyup",function(){
         if ($(this).val() != "") {
@@ -1114,6 +1139,35 @@ $(".btn-info-pedido").on("click", function(){
         }
     });
 
+
+    $(document).on("click", ".btn-delete", function(e){
+		e.preventDefault();
+		ruta = $(this).attr("href");
+		swal({
+		    title: "¿Estas seguro de eliminar el registro?",
+		    text: "Si esta seguro de hacerlo haga click en el boton Aceptar, caso contrario haga click en cancelar",
+		    type: "warning",
+	        showCancelButton: true,
+	        confirmButtonClass: "btn-danger",
+	        confirmButtonText: "Aceptar",
+	        closeOnConfirm: false,
+	        showLoaderOnConfirm: true,
+		},
+		function(isConfirm){
+
+		   	if (isConfirm){
+		     	$.ajax({
+					url: ruta,
+					type: "POST",
+					success: function(resp){
+						window.location.href = base_url + resp;
+					}
+				});
+		    } 
+		 });
+		
+	});
+
     $('.sidebar-menu').tree();
 
 
@@ -1124,6 +1178,16 @@ $(".btn-info-pedido").on("click", function(){
         $("#cliente").val(infocliente[1]);
         $("#modal-default").modal("hide");
     });
+
+    $(document).on("click",".btn-check1",function(){
+        proveedor = $(this).val();
+        infoproveedor = proveedor.split("*");
+        $("#idproveedor").val(infoproveedor[0]);
+        $("#proveedor").val(infoproveedor[1]);
+        $("#modal-proveedor").modal("hide");
+    });
+
+
     $("#proveedor").autocomplete({
         source:function(request, response){
             $.ajax({
@@ -1351,6 +1415,20 @@ $(".btn-info-pedido").on("click", function(){
             data:{id:valor_id},
             success:function(data){
                 $("#modal-venta .modal-body").html(data);
+            }
+        });
+    });
+
+
+    $(document).on("click",".btn-view-compra",function(){
+        valor_id = $(this).val();
+        $.ajax({
+            url: base_url + "movimientos/compras/view",
+            type:"POST",
+            dataType:"html",
+            data:{id:valor_id},
+            success:function(data){
+                $("#modal-compra .modal-body").html(data);
             }
         });
     });

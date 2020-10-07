@@ -23,16 +23,25 @@
                         <?php endif; ?>
                         <form action="<?php echo base_url(); ?>mantenimiento/almacen/update" method="POST">
                             <input type="hidden" value="<?php echo $almacen->id; ?>" name="idAlmacen">
+                            <?php if ($this->session->flashdata("success")) : ?>
+                                <script>
+                                    swal("Registro Exitoso!", "Haz click en el botón para continuar registrando.", "success");
+                                </script>
+                            <?php endif ?>
+                            <?php if ($this->session->flashdata("error")) : ?>
+                                <script>
+                                    swal("Error al Registrar!", "Haz click en el botón para volver intentarlo.", "error");
+                                </script>
+                            <?php endif ?>
                             <div class="form-group <?php echo form_error('nombre') == true ? 'has-error' : ''; ?>">
                                 <label for="nombre">Nombre:</label>
                                 <input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo $almacen->nombre ?>">
                                 <?php echo form_error("nombre", "<span class='help-block'>", "</span>"); ?>
                             </div>
-                            <div class="form-group">
-                                <label for="fecha_creacion">Fecha Creacion:</label>
-                                <input type="datetime" class="form-control" name="fecha_creacion" id="fecha_creacion" step="1" min="2013-01-01-00:00Z" max="2013-12-31-12:00" value="<?php echo date("Y-m-d\TH-:i"); ?>" readonly>
 
-                            </div>
+
+                            <input type="hidden" class="form-control" name="fecha_creacion" id="fecha_creacion" step="1" min="2013-01-01-00:00Z" max="2013-12-31-12:00" value="<?php echo date("Y-m-d\TH-:i"); ?>" readonly>
+
                             <div class="form-group <?php echo form_error('descripcion') == true ? 'has-error' : ''; ?>">
                                 <label for="descripcion">Ubicacion:</label>
                                 <input type="text" class="form-control" id="descripcion" name="descripcion" value="<?php echo $almacen->descripcion ?>">

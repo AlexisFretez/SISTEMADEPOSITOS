@@ -1,3 +1,13 @@
+<?php if ($this->session->flashdata("success")) : ?>
+    <script>
+        swal("Registro Actualizado!", "<?php echo $this->session->flashdata("success"); ?>", "success");
+    </script>
+<?php endif ?>
+<?php if ($this->session->flashdata("error")) : ?>
+    <script>
+        swal("Error al Registrar!", "Haz click en el botón para volver intentarlo.", "error");
+    </script>
+<?php endif ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -41,7 +51,18 @@
                                             <tr>
                                                 <td><?php echo $almacen->id; ?></td>
                                                 <td><?php echo $almacen->nombre; ?></td>
-                                                <td><?php echo $almacen->fecha_creacion; ?></td>
+                                                <td><?php echo date("d-m-Y\  H:i", strtotime($almacen->fecha_creacion)); ?></td>
+                                                <!-- 
+                                        <td><?php echo date("Y-m-d\TH-:i", strtotime($almacen->fecha_creacion)); ?></td> 
+
+                                        <td><?php echo $almacen->fecha_creacion; ?></td>
+                                        
+                                        <td><?php echo date("d-m-Y\-H:i", strtotime($almacen->fecha_creacion)); ?></td>
+                                        
+                                        
+                                        -->
+
+
                                                 <td><?php echo $almacen->descripcion; ?></td>
                                                 <td><?php echo $almacen->precio; ?></td>
                                                 <td>
@@ -53,7 +74,7 @@
                                                             <a href="<?php echo base_url() ?>mantenimiento/almacen/edit/<?php echo $almacen->id; ?>" class="btn btn-warning"><span class="fa fa-pencil"></span></a>
                                                         <?php endif; ?>
                                                         <?php if ($permisos->delete == 1) : ?>
-                                                            <a href="<?php echo base_url(); ?>mantenimiento/almacen/delete/<?php echo $almacen->id; ?>" class="btn btn-danger btn-remove"><span class="fa fa-remove"></span></a>
+                                                            <a href="<?php echo base_url(); ?>mantenimiento/almacen/delete/<?php echo $almacen->id; ?>" class="btn btn-danger btn-delete"><span class="fa fa-remove"></span></a>
                                                         <?php endif; ?>
                                                     </div>
                                                 </td>

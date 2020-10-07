@@ -50,12 +50,21 @@
                     </div>
                     <!--Inicio 2da Columna-->
                     <div class="col-md-3">
-                        <label for="">Fecha de Ingreso:</label>
-                        <input type="datetime" class="form-control" name="fecha" id="fecha" step="1" min="2013-01-01-00:00Z" max="2013-12-31-12:00" value="<?php echo date("Y-m-d\TH-:i"); ?>" readonly>
+
+                        <input type="hidden" class="form-control" name="fecha" id="fecha" step="1" min="2013-01-01-00:00Z" max="2013-12-31-12:00" value="<?php echo date("Y-m-d\TH-:i"); ?>" readonly>
 
                         <label for="">Empresa/Cliente:</label>
-                        <input type="text" class="form-control" name="proveedor" id="proveedor" placeholder="Escriba el nombre de la Empresa">
-                        <input type="hidden" name="idproveedor" id="idproveedor">
+
+
+
+                        <label for="">Empresa:</label>
+                        <div class="input-group">
+                            <input type="hidden" name="idproveedor" id="idproveedor">
+                            <input type="text" class="form-control" name="proveedor" id="proveedor" placeholder="">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modal-proveedor"><span class="fa fa-search"></span> Buscar</button>
+                            </span>
+                        </div><!-- /input-group -->
 
                         <label for="">Depositos:</label>
                         <select name="almacen" id="almacen" class="form-control" required>
@@ -80,6 +89,20 @@
                             <?php endforeach ?>
 
                         </select>
+
+
+                        //input de Subtotal y Total
+
+
+                        <div class="input-group">
+                            <span class="input-group-addon">Subtotal:</span>
+                            <input type="hidden" class="form-control" placeholder="0.00" name="subtotal" readonly="readonly">
+                        </div>
+
+                        <div class="input-group">
+                            <span class="input-group-addon">Total:</span>
+                            <input type="hidden" class="form-control" placeholder="0.00" name="total" readonly="readonly">
+                        </div>
                         -->
 
 
@@ -94,21 +117,16 @@
 
 
 
+                        <!-- /.tab-pane -->
 
+
+                        <!-- /.tab-pane -->
 
                         <br>
-                        <div class="input-group">
-                            <span class="input-group-addon">Subtotal:</span>
-                            <input type="hidden" class="form-control" placeholder="0.00" name="subtotal" readonly="readonly">
-                        </div>
 
-                        <div class="input-group">
-                            <span class="input-group-addon">Total:</span>
-                            <input type="hidden" class="form-control" placeholder="0.00" name="total" readonly="readonly">
-                        </div>
                         <br>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-success btn-flat" id="btn-guardar-compra"><i class="fa fa-save"></i> Guardar Compra</button>
+                            <button type="submit" class="btn btn-success btn-flat" id="btn-guardar-compra"><i class="fa fa-save"></i> Guardar Ingreso</button>
                             <a href="<?php echo base_url() . $this->uri->segment(1) . '/' . $this->uri->segment(2); ?>" class="btn btn-danger btn-flat"><i class="fa fa-times"></i> Cancelar</a>
                         </div>
                     </div>
@@ -129,3 +147,54 @@
 
 </div>
 <!-- /.content-wrapper -->
+
+
+<div class="modal fade" id="modal-proveedor">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Empresa</h4>
+            </div>
+            <div class="modal-body">
+                <div class="nav-tabs-custom">
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_1">
+                            <table id="example1" class="table table-bordered table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Ruc</th>
+
+                                        <th>Nombre</th>
+                                        <th>Numero Trelefono</th>
+                                        <th>Opcion</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php if (!empty($proveedores)) : ?>
+                                        <?php foreach ($proveedores as $proveedor) : ?>
+                                            <tr>
+                                                <td><?php echo $proveedor->nit; ?></td>
+                                                <td><?php echo $proveedor->nombre; ?></td>
+
+                                                <td><?php echo $proveedor->telefono; ?></td>
+                                                <?php $dataproveedor = $proveedor->id . "*" . $proveedor->nombre . "*" . $proveedor->telefono . "*" .   $proveedor->telefono . "*" . $proveedor->direccion; ?>
+                                                <td>
+                                                    <button type="button" class="btn btn-success btn-check1" value="<?php echo $dataproveedor; ?>"><span class="fa fa-check"></span></button>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <!-- /.tab-pane -->
+
+                        <!-- /.tab-pane -->
+
+                    </div>
+                    <!-- /.tab-content -->
+                </div>
